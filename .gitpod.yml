@@ -1,0 +1,56 @@
+image: gitpod/workspace-full:2023-01-16-03-31-28
+tasks:
+  - name: Set up aliases
+    init: cp .bash_aliases ~/.bash_aliases
+  - name: Temporal Local Development Server
+    init: |
+      curl -sSf https://temporal.download/cli.sh | sh -s - --dir /workspace
+    command: |
+      cp .bash_aliases ~/.bash_aliases
+      echo "waiting for server...."      
+      clear
+      source /workspace/edu-converters-java-code/.bash_aliases
+      export TEMPORAL_CORS_ORIGINS=http://localhost:3000
+      /workspace/bin/temporal server start-dev --ui-port 8080 --db-filename /workspace/.cluster-persistence.db
+  - name: Worker
+    command: |
+      gp ports await 7233 && gp ports await 8080 && sleep 5 && gp preview $(gp url 8080)
+      source /workspace/edu-converters-java-code/.bash_aliases
+      clear
+      echo "Use this terminal to run your Worker"
+    openMode: tab-after
+  - name: Terminal
+    command: |
+      gp open README.md
+      pushd exercises/testing-code/solution
+      mvn compile
+      mvn clean
+      popd
+      source /workspace/edu-converters-java-code/.bash_aliases
+      clear
+      echo "Use this terminal to run commands.."
+    openMode: split-right
+
+ports:
+  - name: Temporal server
+    port: 7233
+    onOpen: ignore
+  - name: Temporal Web UI v2
+    port: 8080 # temporal UI
+    description: New (v2) Temporal Web UI
+    onOpen: ignore
+    visibility: private
+  - name: Greeting Service
+    description: Local microservice used in exercises
+    port: 9999
+    onOpen: ignore
+    visibility: private
+
+vscode:
+  extensions:
+    - golang.Go
+    - ms-python.python
+    - redhat.java
+    - vscjava.vscode-java-test
+    - vscjava.vscode-java-debug
+    - wingrunr21.vscode-ruby
