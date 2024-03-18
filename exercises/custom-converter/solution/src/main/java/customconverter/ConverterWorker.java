@@ -9,6 +9,8 @@ import io.temporal.common.converter.CodecDataConverter;
 import io.temporal.common.converter.DefaultDataConverter;
 import java.util.Collections;
 
+import customconverter.codec.CustomPayloadCodec;
+
 public class ConverterWorker {
 
   public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package customconverter;
+package customconverter.codec;
 
 import com.google.protobuf.ByteString;
 import io.temporal.api.common.v1.Payload;
@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 import org.xerial.snappy.Snappy;
 
 
-class CustomPayloadCodec implements PayloadCodec {
+public class CustomPayloadCodec implements PayloadCodec {
 
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
