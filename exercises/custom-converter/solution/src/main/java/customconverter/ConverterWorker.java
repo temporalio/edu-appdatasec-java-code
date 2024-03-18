@@ -16,11 +16,11 @@ public class ConverterWorker {
   public static void main(String[] args) {
     WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
     WorkflowClient client = WorkflowClient.newInstance(service, WorkflowClientOptions.newBuilder()
-    .setDataConverter(
-      new CodecDataConverter(
-        DefaultDataConverter.newDefaultInstance(),
-        Collections.singletonList(new CustomPayloadCodec()), true)) 
-    .build());
+        .setDataConverter(
+            new CodecDataConverter(
+                DefaultDataConverter.newDefaultInstance(),
+                Collections.singletonList(new CustomPayloadCodec()), true))
+        .build());
 
     WorkerFactory factory = WorkerFactory.newInstance(client);
 

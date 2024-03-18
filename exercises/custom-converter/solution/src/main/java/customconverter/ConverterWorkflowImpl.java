@@ -25,7 +25,7 @@ public class ConverterWorkflowImpl implements ConverterWorkflow {
 
     String result = activities.activity(input);
 
-    throw ApplicationFailure.newFailure("Artificial Error", "Artificial Error");
+    throw ApplicationFailure.newFailure("This is an artificial error", "Artificial Error");
 
     //logger.info("Converter workflow completed: " + result);
 
