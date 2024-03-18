@@ -4,7 +4,7 @@ During this exercise, you will:
 
 - Output typical payloads from a Temporal Workflow using the default Data Converter
 - Implement a Custom Data Converter that encrypts Workflow output
-- Implement a Failure Converter and demonstrate parsing its output
+- Enable a Failure Converter and demonstrate parsing its output
 
 Make your changes to the code in the `practice` subdirectory (look for
 `TODO` comments that will guide you to where you should make changes to
