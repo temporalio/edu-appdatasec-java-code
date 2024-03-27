@@ -1,2 +1,2 @@
-# edu-converters-java-code
-Code exercises for Converters in java
+# edu-appdatasec-java-code
+Code exercises for Securing Application Data in Temporal (Java)
