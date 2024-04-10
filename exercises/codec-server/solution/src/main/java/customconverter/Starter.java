@@ -22,8 +22,8 @@ public class Starter {
         .build());
 
     WorkflowOptions options = WorkflowOptions.newBuilder()
-        .setWorkflowId("converter-workflow")
-        .setTaskQueue("converter-tasks")
+        .setWorkflowId("codecserver-workflow")
+        .setTaskQueue("codecserver-tasks")
         .build();
 
     ConverterWorkflow workflow = client.newWorkflowStub(ConverterWorkflow.class, options);

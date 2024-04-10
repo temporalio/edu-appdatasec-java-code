@@ -23,7 +23,7 @@ public class ConverterWorker {
 
     WorkerFactory factory = WorkerFactory.newInstance(client);
 
-    Worker worker = factory.newWorker("converter-tasks");
+    Worker worker = factory.newWorker("codecserver-tasks");
 
     worker.registerWorkflowImplementationTypes(ConverterWorkflowImpl.class);
 
