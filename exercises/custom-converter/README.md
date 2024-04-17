@@ -138,17 +138,11 @@ add more features to it.
 
 ## Part B: Implement a Failure Converter
 
-1. The next feature you may add is a Failure Converter. Failure messages and
-   stack traces are not encoded as codec-capable Payloads by default; you must
-   explicitly enable encoding these common attributes on failures. If your
-   errors might contain sensitive information, you can encrypt the message and
-   stack trace by configuring the default Failure Converter to use your encoded
-   attributes, in which case it moves your `message` and `stack_trace` fields to a
-   Payload that's run through your codec. To do this, you can override the
+1. The next feature you may add is a Failure Converter. To do this, you can override the
    default Failure Converter with a single additional parameter, `true`.
    1. Locate the `WorkflowClient.newInstance...` code you added in the previous exercise.
-   1. Add the value `true` as the last value in the `new DataCodecConverter()` constructor.
-   1. Do this in both `ConverterWorker.java` and `Starter.java`
+   2. Add the value `true` as the last value in the `new DataCodecConverter()` constructor.
+   3. Do this in both `ConverterWorker.java` and `Starter.java`
 2. To test your Failure Converter, change your Workflow to return an artificial
    error.
 
@@ -158,31 +152,31 @@ add more features to it.
    throw ApplicationFailure.newFailure("Artificial Error", "Artificial Error");
    ```
 
-   1. Comment out all code after the `throw` statement as that code will
+   2. Comment out all code after the `throw` statement as that code will
       become unreachable.
-   1. Stop your worker using `Ctrl-C`
-   1. Recompile your code
+   3. Stop your worker using `Ctrl-C`
+   4. Recompile your code
 
    ```shell
    mvn clean compile
    ```
 
-   1. Restart the worker using
+   5. Restart the worker using
 
    ```shell
    mvn exec:java -Dexec.mainClass="customconverter.ConverterWorker"
    ```
 
-   1. Rerun the workflow with
+   6. Rerun the workflow with
 
    ```shell
    mvn exec:java -Dexec.mainClass="customconverter.Starter"
    ```
 
-   1. You should see a stack trace appear. This was expected. Stop the execution
+   7. You should see a stack trace appear. This was expected. Stop the execution
       using `Ctrl-C`.
 
-   1. Finally, get the result again with to get the status of your failed Workflow.
+   8. Finally, get the result again with to get the status of your failed Workflow.
 
    ```shell
    temporal workflow show -w converter-workflow
