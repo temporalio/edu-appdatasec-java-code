@@ -1,9 +1,9 @@
-# Exercise 1: Implement a Custom Data Converter
+# Exercise 1: Implement a Custom Codec
 
 During this exercise, you will:
 
 - Output typical payloads from a Temporal Workflow using the default Data Converter
-- Implement a Custom Data Converter that encrypts Workflow output
+- Implement a Custom Codec that compresses Workflow output
 - Enable a Failure Converter and demonstrate parsing its output
 
 Make your changes to the code in the `practice` subdirectory (look for
@@ -24,14 +24,14 @@ the code.
 | `ex1w`  | Execute the Exercise 1 Worker. Must be within the appropriate directory for this to succeed. (either `practice` or `solution`)  |
 | `ex1st` | Execute the Exercise 1 Starter. Must be within the appropriate directory for this to succeed. (either `practice` or `solution`) |
 
-## Part A: Implement a Custom Data Converter
+## Part A: Implement a Custom Codec
 
-1. Defining a Custom Data Converter is a straightforward change to your existing
-   Worker and Starter code. The example in the `practice` subdirectory of this
-   exercise is missing the necessary change to use a Custom Data Converter,
-   meaning that you can run it out of the box, and produce JSON output using the
-   Default Data Converter. You'll do this first, so you have an idea of the
-   expected output. First, start the Worker:
+1. Defining a Custom Codec is a straightforward change to your existing Worker
+   and Starter code. The example in the `practice` subdirectory of this exercise
+   is missing the necessary change to use a Custom Codec, meaning that you can
+   run it out of the box, and produce JSON output using the Default Data
+   Converter. You'll do this first, so you have an idea of the expected output.
+   First, start the Worker:
 
    ```shell
    mvn exec:java -Dexec.mainClass="customconverter.ConverterWorker"
@@ -73,7 +73,7 @@ the code.
    the string "Received Plain text input". In the next step, you'll add a Custom
    Data Converter.
 
-4. To add a Custom Data Converter, you don't need to change anything in your
+4. To add a Custom Codec, you don't need to change anything in your
    Workflow code. You only need to add a `CodecDataConverter` parameter to
    `WorkflowClient client = WorkflowClient.newInstance(service);` where it is used
    in both `ConverterWorker.java` and `Starter.java`.
@@ -87,14 +87,14 @@ the code.
         Collections.singletonList(new CustomPayloadCodec())))
     .build());
    ```
-5. Next, review `CustomPayloadCodec.java`. This contains the Custom Converter
+5. Next, review `CustomPayloadCodec.java`. This contains the Custom Codec
    code you'll be using. The `encode()` method applies the `encodePayload()` method
    to each element in the payload. The `encodePayload()` method compresses the payload
    using Java's [snappy](https://github.com/google/snappy) codec, and sets the
    file metadata. The `decode()` and `decodePayload()` methods do the same thing,
    but in reverse. Add the missing calls to the `encode` method (you can use the
    `decode()` function as a hint).
-6. Now you can re-run the Workflow with your Custom Converter.
+6. Now you can re-run the Workflow with your Custom Codec.
 
    1. Stop your Worker (with `Ctrl+C` in a blocking terminal)
    1. Recompile your code
@@ -133,7 +133,7 @@ the code.
 The `payload encoding is not supported` message is normal — the Temporal
 Cluster itself can't use the `decode` method directly without a Codec
 Server, which you'll create in the next exercise. In the meantime, you have
-successfully implemented a Custom Data Converter, and in the next step, you'll
+successfully customized a Data Converter, and in the next step, you'll
 add more features to it.
 
 ## Part B: Implement a Failure Converter
