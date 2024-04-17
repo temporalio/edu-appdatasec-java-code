@@ -2,7 +2,7 @@
 
 This repository provides code used for exercises and demonstrations
 included in the Java version of the
-[Converters](https://learn.temporal.io/courses/converters)
+[Securing Application Data](https://learn.temporal.io/courses/appdatasec)
 training course.
 
 It's important to remember that the example code used in this course was designed
@@ -30,7 +30,7 @@ The following links provide additional information that you may find helpful as 
 You can launch an exercise environment for this course in GitPod by
 clicking the button below:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-converters-java-code)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-appdatasec-java-code)
 
 Alternatively, you can follow
 [these instructions](https://learn.temporal.io/getting_started/java/dev_environment/) to
