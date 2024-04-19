@@ -59,12 +59,20 @@ the complete version in the `solution` subdirectory.
    listens on port 8081, which is usually used in testing configurations — but
    this fulfills all the requirements of a Temporal Codec Server, and you could
    incorporate any other authentication requirements on top of HTTP as needed.
-   Perform the next steps to run your Codec Server:
+   Re-run the Workflow, then run your Codec Server:
    1. Compile your code
    ```bash
    mvn clean compile
    ```
-   1. Run your server using mvn:
+   2. First, start the Worker:
+   ```shell
+   mvn exec:java -Dexec.mainClass="customconverter.ConverterWorker"
+   ```
+   3. Next, from another terminal, run the Workflow starter:
+   ```shell
+   mvn exec:java -Dexec.mainClass="customconverter.Starter"
+   ```
+   4. Run your server using mvn:
    ```bash
    mvn exec:java -Dexec.mainClass="customconverter.codecserver.StartServer"
    ```
@@ -74,7 +82,7 @@ the complete version in the `solution` subdirectory.
 
    ```
    temporal workflow show \
-      -w converters_workflowID \
+      -w codecserver-workflow \
       --codec-endpoint 'http://localhost:8081/{namespace}'`
    ```
 
