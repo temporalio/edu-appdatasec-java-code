@@ -55,11 +55,9 @@ ports:
     description: New (v2) Temporal Web UI
     onOpen: ignore
     visibility: private
-  - name: Greeting Service
-    description: Local microservice used in exercises
-    port: 9999
+  - name: Codec server
+    port: 8081
     onOpen: ignore
-    visibility: private
 
 vscode:
   extensions:
