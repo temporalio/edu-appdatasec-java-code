@@ -52,7 +52,7 @@ the code.
 4. After that, you can use the `temporal` CLI to show the Workflow result:
 
    ```shell
-   temporal workflow show -w converters_workflowID
+   temporal workflow show -w converter-workflow
    ```
 
    ```
