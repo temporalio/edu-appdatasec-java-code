@@ -7,6 +7,7 @@ import io.temporal.common.converter.DataConverterException;
 import io.temporal.common.converter.EncodingKeys;
 import io.temporal.payload.codec.PayloadCodecException;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -25,6 +26,9 @@ public class CustomPayloadCodec implements PayloadCodec {
     // TODO: Add the appropriate call to the encodePayload method below, then
     // uncomment the return statement.
     // return payloads.stream().map().collect(Collectors.toList());
+
+    // TODO: DELETE THIS once you have implemented the above call
+    return new ArrayList<Payload>();
   }
 
   @Override
