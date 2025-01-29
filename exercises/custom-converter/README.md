@@ -11,19 +11,6 @@ Make your changes to the code in the `practice` subdirectory (look for
 the code). If you need a hint or want to verify your changes, look at
 the complete version in the `solution` subdirectory.
 
-### GitPod Environment Shortcuts
-
-If you are executing the exercises in the provided GitPod environment, you
-can take advantage of certain aliases to aid in navigation and execution of
-the code.
-
-| Command | Action                                                                                                                          |
-| :------ | :------------------------------------------------------------------------------------------------------------------------------ |
-| `ex1`   | Change to Exercise 1 Practice Directory                                                                                         |
-| `ex1s`  | Change to Exercise 1 Solution Directory                                                                                         |
-| `ex1w`  | Execute the Exercise 1 Worker. Must be within the appropriate directory for this to succeed. (either `practice` or `solution`)  |
-| `ex1st` | Execute the Exercise 1 Starter. Must be within the appropriate directory for this to succeed. (either `practice` or `solution`) |
-
 ## Part A: Implement a Custom Codec
 
 1. Defining a Custom Codec is a straightforward change to your existing Worker
