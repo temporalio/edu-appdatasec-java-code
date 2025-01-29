@@ -8,6 +8,9 @@ During this exercise, you will:
 - Integrate your Codec Server with the Temporal Web UI
 - Securely return decoded results in the CLI and the Web UI
 
+**Note: Part B of this Exercise does not work in the Gitpod Environment.**
+If you want to demonstrate Codec Server Web UI integration, you'll need to clone this repository and run the exercise locally.
+
 Make your changes to the code in the `practice` subdirectory (look for
 `TODO` comments that will guide you to where you should make changes to
 the code). If you need a hint or want to verify your changes, look at
@@ -80,7 +83,7 @@ the complete version in the `solution` subdirectory.
    ```
    temporal workflow show \
       -w codecserver-workflow \
-      --codec-endpoint 'http://localhost:8081/{namespace}'`
+      --codec-endpoint 'http://localhost:8081/{namespace}'
    ```
 
    It should retain the same Event History as before, with the decoded result
