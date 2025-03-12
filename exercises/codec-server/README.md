@@ -83,7 +83,7 @@ the complete version in the `solution` subdirectory.
    ```
    temporal workflow show \
       -w codecserver-workflow \
-      --codec-endpoint 'http://localhost:8081/{namespace}'`
+      --codec-endpoint 'http://localhost:8081/{namespace}'
    ```
 
    It should retain the same Event History as before, with the decoded result
