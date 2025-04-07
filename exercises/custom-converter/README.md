@@ -44,22 +44,23 @@ the complete version in the `solution` subdirectory.
 
    ```
    Progress:
-     ID          Time                     Type
-      1  2024-03-14T16:01:21Z  WorkflowExecutionStarted
-      2  2024-03-14T16:01:21Z  WorkflowTaskScheduled
-      3  2024-03-14T16:01:21Z  WorkflowTaskStarted
-      4  2024-03-14T16:01:21Z  WorkflowTaskCompleted
-      5  2024-03-14T16:01:21Z  ActivityTaskScheduled
-      6  2024-03-14T16:01:21Z  ActivityTaskStarted
-      7  2024-03-14T16:01:21Z  ActivityTaskCompleted
-      8  2024-03-14T16:01:21Z  WorkflowTaskScheduled
-      9  2024-03-14T16:01:21Z  WorkflowTaskStarted
-     10  2024-03-14T16:01:21Z  WorkflowTaskCompleted
-     11  2024-03-14T16:01:21Z  WorkflowExecutionCompleted
+     ID           Time                     Type
+       1  2024-08-26T20:28:51Z  WorkflowExecutionStarted
+       2  2024-08-26T20:28:51Z  WorkflowTaskScheduled
+       3  2024-08-26T20:28:51Z  WorkflowTaskStarted
+       4  2024-08-26T20:28:51Z  WorkflowTaskCompleted
+       5  2024-08-26T20:28:51Z  ActivityTaskScheduled
+       6  2024-08-26T20:28:51Z  ActivityTaskStarted
+       7  2024-08-26T20:28:51Z  ActivityTaskCompleted
+       8  2024-08-26T20:28:51Z  WorkflowTaskScheduled
+       9  2024-08-26T20:28:51Z  WorkflowTaskStarted
+      10  2024-08-26T20:28:51Z  WorkflowTaskCompleted
+      11  2024-08-26T20:28:51Z  WorkflowExecutionCompleted
 
-   Result:
-     Status: COMPLETED
-     Output: ["Received Plain text input"]
+   Results:
+     Status          COMPLETED
+     Result          "Received Plain text input"
+     ResultEncoding  json/plain
    ```
 
    You should now have an idea of how this Workflow runs ordinarily — it outputs
@@ -118,9 +119,10 @@ the complete version in the `solution` subdirectory.
 
    ```shell
    ...
-   Result:
-     Status: COMPLETED
-     Output: [encoding binary/snappy: payload encoding is not supported]
+   Results:
+      Status          COMPLETED
+      Result          {"metadata":{"encoding":"YmluYXJ5L3NuYXBweQ=="},"data":"NdAKFgoIZW5jb2RpbmcSCmpzb24vcGxhaW4SGyJSZWNlaXZlZCBQbGFpbiB0ZXh0IGlucHV0Ig=="}
+      ResultEncoding  binary/snappy
    ```
 
 The `payload encoding is not supported` message is normal — the Temporal
@@ -139,9 +141,11 @@ add more features to it.
 2. To test your Failure Converter, change your Workflow to return an artificial
    error.
 
-   1. Add the following code after executing your Activity.
+   1. Add the following import statement to your Workflow and code after executing your Activity in `ConverterWorkflowImpl.Java`.
 
    ```java
+   import io.temporal.failure.ApplicationFailure;
+   ...
    throw ApplicationFailure.newFailure("Artificial Error", "Artificial Error");
    ```
 
@@ -193,9 +197,10 @@ add more features to it.
     10  2024-03-14T17:08:20Z  WorkflowTaskCompleted
     11  2024-03-14T17:08:20Z  WorkflowExecutionFailed
 
-   Result:
-     Status: FAILED
-     Failure: &Failure{Message:Encoded failure,Source:JavaSDK,StackTrace:,Cause:nil,FailureType:Failure_ApplicationFailureInfo,}
+   Results:
+      Status   FAILED
+      Failure
+         Message: Encoded failure
    ```
 
 ### This is the end of the exercise.
